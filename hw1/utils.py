@@ -42,7 +42,7 @@ class ChoiceFeatureTransformer(TransformerMixin, BaseEstimator):
 
 def calc_engine_columns(df):
     def calc_num_column(value):
-        if value is np.nan:
+        if value is np.nan or value is None:
             return np.nan
         value = value.split()[0]
         try:
@@ -59,7 +59,7 @@ def calc_engine_columns(df):
 
 def calc_torque(df):
     def torque_rpm(value):
-        if value is np.nan:
+        if value is np.nan or value is None:
             return (np.nan, np.nan)
         value = value.replace(',', '')
         nums = re.findall(r'\d+(?:\.\d+)?', value)
